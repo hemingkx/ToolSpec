@@ -1,0 +1,1050 @@
+[
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: SymptomSearch\nDescription: This API searches for a given symptom.\nParameters: {'symptom': {'type': 'str', 'description': 'The symptom to search.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hello, can you help me with my skin rash? </user>\n<response> Of course, let me see if I can find some possible diseases related to your symptoms. Please tell me more about your rash. </response>\n\n<user> It's a red, bumpy rash on my arm. </user>\n<response> Okay, let me search for some possible causes of your rash. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "SymptomSearch",
+            "parameters": {
+                "symptom": "rash"
+            }
+        },
+        "other": {
+            "file": "SymptomSearch-level-3-2.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: ModifyMeeting\nDescription: This API allows users to modify a reservation for a meetingFunction：Delete user's reservation for a meeting.Exception Handling：1. If the modification is successful, return a success message.2. If the modification fails, return a corresponding error message.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'meeting_topic': {'type': 'str', 'description': 'The title of the meeting, no more than 50 characters.'}, 'start_time': {'type': 'str', 'description': 'The start time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'end_time': {'type': 'str', 'description': 'The end time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location where the meeting to be held, no more than 100 characters.'}, 'attendees': {'type': 'list(str)', 'description': 'The attendees of the meeting, including names, positions and other information.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me modify my reservation for Product Development Meeting on March 29, 2023 at 10:00 AM in the Research and Development Department with attendees Robert Lee, Anna Zhang, and Tony Wang? </user>\n<response> Sure. Let me search for the relevant tool first. </response>\n<response> To modify your reservation, I need your authentication token. Please provide me with your username and password. </response>\n\n<user> My username is user4 and my password is user4pass. </user>\n<response> Thank you. Now, let me get your token. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "user4",
+                "password": "user4pass"
+            }
+        },
+        "other": {
+            "file": "ModifyMeeting-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: ModifyMeeting\nDescription: This API allows users to modify a reservation for a meetingFunction：Delete user's reservation for a meeting.Exception Handling：1. If the modification is successful, return a success message.2. If the modification fails, return a corresponding error message.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'meeting_topic': {'type': 'str', 'description': 'The title of the meeting, no more than 50 characters.'}, 'start_time': {'type': 'str', 'description': 'The start time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'end_time': {'type': 'str', 'description': 'The end time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location where the meeting to be held, no more than 100 characters.'}, 'attendees': {'type': 'list(str)', 'description': 'The attendees of the meeting, including names, positions and other information.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me modify my reservation for Product Development Meeting on March 29, 2023 at 10:00 AM in the Research and Development Department with attendees Robert Lee, Anna Zhang, and Tony Wang? </user>\n<response> Sure. Let me search for the relevant tool first. </response>\n<response> To modify your reservation, I need your authentication token. Please provide me with your username and password. </response>\n\n<user> My username is user4 and my password is user4pass. </user>\n<response> Thank you. Now, let me get your token. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"user4\", \"password\": \"user4pass\"}}\n</tool_call>\n<obs> {'token': 'q9w8e7r6t5y4u3i2o1'} </obs>\n<response> I have received your token. Let me modify your reservation. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "ModifyMeeting",
+            "parameters": {
+                "token": "q9w8e7r6t5y4u3i2o1",
+                "meeting_topic": "Product Development Meeting",
+                "start_time": "2023-03-29 10:00:00",
+                "end_time": "2023-03-29 12:00:00",
+                "location": "Research and Development Department",
+                "attendees": "['Robert Lee', 'Anna Zhang', 'Tony Wang']"
+            }
+        },
+        "other": {
+            "file": "ModifyMeeting-level-3-1.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: DeleteAlarm\nDescription: The API for removing an alarm includes a parameter for the time.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'time': {'type': 'str', 'description': 'The time for alarm. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me delete an alarm set for March 20th at 6:30 am? </user>\n<response> Sure, let me check. </response>\n<response> It looks like I can remove the alarm. May I have your username and password to fetch the token for authentication? </response>\n\n<user> My username is JaneSmith and my password is password. </user>\n<response> Thank you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "JaneSmith",
+                "password": "password"
+            }
+        },
+        "other": {
+            "file": "DeleteAlarm-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: DeleteAlarm\nDescription: The API for removing an alarm includes a parameter for the time.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'time': {'type': 'str', 'description': 'The time for alarm. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me delete an alarm set for March 20th at 6:30 am? </user>\n<response> Sure, let me check. </response>\n<response> It looks like I can remove the alarm. May I have your username and password to fetch the token for authentication? </response>\n\n<user> My username is JaneSmith and my password is password. </user>\n<response> Thank you. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"JaneSmith\", \"password\": \"password\"}}\n</tool_call>\n<obs> {'token': 'o8i7u6y5t4r3e2w1q0'} </obs>\n<response> I have fetched the token. Now, may I have the exact time of the alarm you want to remove? </response>\n\n<user> The time is March 20th at 6:30 am. </user>\n<response> Got it. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "DeleteAlarm",
+            "parameters": {
+                "token": "o8i7u6y5t4r3e2w1q0",
+                "time": "2023-03-20 06:30:00"
+            }
+        },
+        "other": {
+            "file": "DeleteAlarm-level-3-1.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: AddReminder\nDescription: Add a reminder API that takes three parameters - 'token'，'content' and 'time'. The 'token' parameter refers to the user's token and the 'content' parameter refers to the description of the reminder and the 'time' parameter specifies the time at which the reminder should be triggered.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the conference.'}, 'time': {'type': 'str', 'description': 'The time for conference. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hi, can you remind me to pay bills on March 20th at 12 PM? </user>\n<response> Sure, let me check for available tools. </response>\n<response> Okay, I found a tool that can help you with that. To set a reminder, I'll need your authentication token. Can you provide me with your username and password? </response>\n\n<user> My username is admin and my password is adminpass. </user>\n<response> Thank you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "admin",
+                "password": "adminpass"
+            }
+        },
+        "other": {
+            "file": "DeleteReminder-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: AddReminder\nDescription: Add a reminder API that takes three parameters - 'token'，'content' and 'time'. The 'token' parameter refers to the user's token and the 'content' parameter refers to the description of the reminder and the 'time' parameter specifies the time at which the reminder should be triggered.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the conference.'}, 'time': {'type': 'str', 'description': 'The time for conference. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hi, can you remind me to pay bills on March 20th at 12 PM? </user>\n<response> Sure, let me check for available tools. </response>\n<response> Okay, I found a tool that can help you with that. To set a reminder, I'll need your authentication token. Can you provide me with your username and password? </response>\n\n<user> My username is admin and my password is adminpass. </user>\n<response> Thank you. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"admin\", \"password\": \"adminpass\"}}\n</tool_call>\n<obs> {'token': 'm9n8b7v6c5x4z3a2s1'} </obs>\n<response> Alright, I got your token. Now, let me set up your reminder. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "DeleteReminder",
+            "parameters": {
+                "token": "m9n8b7v6c5x4z3a2s1",
+                "content": "Pay bills",
+                "time": "2023-03-20 12:00:00"
+            }
+        },
+        "other": {
+            "file": "DeleteReminder-level-3-1.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: ModifyReminder\nDescription: Modify a reminder API that takes three parameters - 'token'，'content' and 'time'. The 'token' parameter refers to the user's token and the 'content' parameter refers to the description of the reminder and the 'time' parameter specifies the time at which the reminder should be triggered.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the conference.'}, 'time': {'type': 'str', 'description': 'The time for conference. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me modify a reminder for tomorrow? </user>\n<response> Sorry, I am unable to understand the specific date you want me to set the reminder. Could you please tell me the exact date and time? </response>\n\n<user> Yes, I need to modify a reminder for March 17th at 2 PM to call my mom. </user>\n<response> Sure, let me search for relevant tools first. </response>\n<response> Okay, to modify the reminder, I will need your token. Can you please provide me with your username and password? </response>\n\n<user> My username is JohnDoe and my password is pass123. </user>\n<response> Thank you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "JohnDoe",
+                "password": "pass123"
+            }
+        },
+        "other": {
+            "file": "ModifyReminder-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: ModifyReminder\nDescription: Modify a reminder API that takes three parameters - 'token'，'content' and 'time'. The 'token' parameter refers to the user's token and the 'content' parameter refers to the description of the reminder and the 'time' parameter specifies the time at which the reminder should be triggered.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the conference.'}, 'time': {'type': 'str', 'description': 'The time for conference. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me modify a reminder for tomorrow? </user>\n<response> Sorry, I am unable to understand the specific date you want me to set the reminder. Could you please tell me the exact date and time? </response>\n\n<user> Yes, I need to modify a reminder for March 17th at 2 PM to call my mom. </user>\n<response> Sure, let me search for relevant tools first. </response>\n<response> Okay, to modify the reminder, I will need your token. Can you please provide me with your username and password? </response>\n\n<user> My username is JohnDoe and my password is pass123. </user>\n<response> Thank you. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"JohnDoe\", \"password\": \"pass123\"}}\n</tool_call>\n<obs> {'token': 'a9s8d7f6g5h4j3k2l1'} </obs>\n<response> I have received your token. Now, please provide me with the content of the reminder and the time you want it to be triggered. </response>\n\n<user> The content is \"Call mom\" and the time is March 17th, 2023 at 2:30 PM. </user>\n<response> Thank you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "ModifyReminder",
+            "parameters": {
+                "token": "a9s8d7f6g5h4j3k2l1",
+                "content": "Call mom",
+                "time": "2023-03-17 14:30:00"
+            }
+        },
+        "other": {
+            "file": "ModifyReminder-level-3-1.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: SymptomSearch\nDescription: This API searches for a given symptom.\nParameters: {'symptom': {'type': 'str', 'description': 'The symptom to search.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me find information about a rash? </user>\n<response> Sure, what specific information do you need about the rash? </response>\n\n<user> I have this rash on my arm and I'd like to know what it could be. </user>\n<response> Let me search for possible causes of rashes. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "SymptomSearch",
+            "parameters": {
+                "symptom": "rash"
+            }
+        },
+        "other": {
+            "file": "SymptomSearch-level-3-3.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: QueryStock\nDescription: This API queries the stock price of a given stock.\nParameters: {'stock_code': {'type': 'str', 'description': 'The stock code of the given stock.'}, 'date': {'type': 'str', 'description': 'The date of the stock price. Format: %Y-%m-%d'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you please tell me the stock price of Microsoft on 4th February 2022? </user>\n<response> Sure, let me check. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "QueryStock",
+            "parameters": {
+                "stock_code": "MSFT",
+                "date": "2022-02-04"
+            }
+        },
+        "other": {
+            "file": "QueryStock-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetToday\nDescription: This API gets the current date.\nParameters: {}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you tell me the date today? </user>\n<response> Sure. Let me check. </response>\n<response> I have found the GetToday tool. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetToday",
+            "parameters": {}
+        },
+        "other": {
+            "file": "GetToday-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: ModifyRegistration\nDescription: This API modifies the registration of a patient given appointment ID.\nParameters: {'appointment_id': {'type': 'str', 'description': 'The ID of appointment.'}, 'new_appointment_date': {'type': 'str', 'description': 'The new appointment date. Format: %Y-%m-%d.'}, 'new_appointment_doctor': {'type': 'str', 'description': 'The new appointment doctor.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me modify my appointment with the details: appointment ID 34567890, new appointment date March 28th, 2023, and new doctor Dr. Lee? </user>\n<response> Sure, let me check. </response>\n<response> Ok, I can help you with that. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "ModifyRegistration",
+            "parameters": {
+                "appointment_id": "34567890",
+                "new_appointment_date": "2023-03-28",
+                "new_appointment_doctor": "Dr. Lee"
+            }
+        },
+        "other": {
+            "file": "ModifyRegistration-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: BookHotel\nDescription: This API orders a hotel room. Two rooms are ordered if the number of adults is greater than 2. Only one order can be made at same time.\nParameters: {'hotel_name': {'type': 'str', 'description': 'The name of the hotel.'}, 'check_in_time': {'type': 'str', 'description': 'The time to check in. Format: %Y-%m-%d'}, 'check_out_time': {'type': 'str', 'description': 'The time to check out. Format: %Y-%m-%d'}, 'room_count': {'type': 'int', 'description': 'The number of rooms to order.'}, 'adult_count': {'type': 'int', 'description': 'The number of adults.'}, 'child_count': {'type': 'int', 'description': 'The number of children.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me book a meeting on March 15th at 3pm for the topic \"Project Update\" with John and Jane? </user>\n<response> Sure, let me check. </response>\n<response> Okay, I can help you with that. What is the location for the meeting? </response>\n\n<user> The conference room on the 5th floor. </user>\n<response> Great. Do you have an account with us? </response>\n\n<user> Yes, my username is JohnDoe and my password is pass123. </user>\n<response> Okay, let me get your token. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "JohnDoe",
+                "password": "pass123"
+            }
+        },
+        "other": {
+            "file": "AddMeeting-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: BookHotel\nDescription: This API orders a hotel room. Two rooms are ordered if the number of adults is greater than 2. Only one order can be made at same time.\nParameters: {'hotel_name': {'type': 'str', 'description': 'The name of the hotel.'}, 'check_in_time': {'type': 'str', 'description': 'The time to check in. Format: %Y-%m-%d'}, 'check_out_time': {'type': 'str', 'description': 'The time to check out. Format: %Y-%m-%d'}, 'room_count': {'type': 'int', 'description': 'The number of rooms to order.'}, 'adult_count': {'type': 'int', 'description': 'The number of adults.'}, 'child_count': {'type': 'int', 'description': 'The number of children.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me book a meeting on March 15th at 3pm for the topic \"Project Update\" with John and Jane? </user>\n<response> Sure, let me check. </response>\n<response> Okay, I can help you with that. What is the location for the meeting? </response>\n\n<user> The conference room on the 5th floor. </user>\n<response> Great. Do you have an account with us? </response>\n\n<user> Yes, my username is JohnDoe and my password is pass123. </user>\n<response> Okay, let me get your token. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"JohnDoe\", \"password\": \"pass123\"}}\n</tool_call>\n<obs> {'token': 'a9s8d7f6g5h4j3k2l1'} </obs>\n<response> I got your token. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "AddMeeting",
+            "parameters": {
+                "token": "a9s8d7f6g5h4j3k2l1",
+                "meeting_topic": "Project Update",
+                "start_time": "2023-03-15 15:00:00",
+                "end_time": "2023-03-15 16:00:00",
+                "location": "conference room on the 5th floor",
+                "attendees": "['John', 'Jane']"
+            }
+        },
+        "other": {
+            "file": "AddMeeting-level-3-1.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: AppointmentRegistration\nDescription: This API registers an appointment of hospital.\nParameters: {'patient_name': {'type': 'str', 'description': 'The name of patient.'}, 'date': {'type': 'str', 'description': 'The date of appointment. Format be like %Y-%m-%d'}, 'doctor_name': {'type': 'str', 'description': 'The name of appointed doctor.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hello, I need help registering an appointment for next Monday with Dr. Smith. </user>\n<response> Sure, let me check. </response>\n<response> Based on your request, I find the suitable tool. Can you please provide me with the patient name and the specific date you want the appointment to be on? </response>\n\n<user> Yes, the patient name is John Doe, and the date is 2023-07-10. </user>\n<response> Great, thank you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "AppointmentRegistration",
+            "parameters": {
+                "patient_name": "John Doe",
+                "date": "2023-07-10",
+                "doctor_name": "Dr. Smith"
+            }
+        },
+        "other": {
+            "file": "AppointmentRegistration-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: QueryHealthData\nDescription: This API queries the recorded health data in database of a given user and time span.\nParameters: {'user_id': {'type': 'str', 'description': 'The user id of the given user. Cases are ignored.'}, 'start_time': {'type': 'str', 'description': 'The start time of the time span. Format: %Y-%m-%d %H:%M:%S'}, 'end_time': {'type': 'str', 'description': 'The end time of the time span. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hi there! Can you help me check my health data from March 13 to March 20, 2023? </user>\n<response> Of course! To do that, I need to verify your user ID. May I have it please? </response>\n\n<user> It's F24681. </user>\n<response> Great, thank you. Now let me check. </response>\n<response> To get your health data, I need your user ID, start time, and end time. Can you please provide me with the start and end times for the period you're interested in? </response>\n\n<user> Sure, it is March 13 at 8am for the start time, and March 14 at 6pm for the end time. </user>\n<response> Got it. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "QueryHealthData",
+            "parameters": {
+                "user_id": "F24681",
+                "start_time": "2023-03-13 08:00:00",
+                "end_time": "2023-03-14 18:00:00"
+            }
+        },
+        "other": {
+            "file": "QueryHealthData-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: QueryHistoryToday\nDescription: This API queries the history of a given user today.\nParameters: {'date': {'type': 'str', 'description': 'The date of the history. Format: %m-%d'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you tell me what happened on October 6th in history? </user>\n<response> Sure, let me search for relevant tools in the library. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "QueryHistoryToday",
+            "parameters": {
+                "date": "10-06"
+            }
+        },
+        "other": {
+            "file": "QueryHistoryToday-level-3-3.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: QueryAgenda\nDescription: The API for getting a schedule item includes parameters for token, content, time, and location.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the agenda.'}, 'time': {'type': 'str', 'description': 'The time for agenda. Format: %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location of the agenda.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me schedule a meeting with John for next Monday at 2 pm in the meeting room? </user>\n<response> Sure. Let me search for relevant tools first. </response>\n<response> Okay, to schedule a meeting with John for next Monday at 2 pm in the meeting room, I need your authentication. Can you please provide your username and password? </response>\n\n<user> My username is JohnDoe and my password is pass123. </user>\n<response> Great. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "JohnDoe",
+                "password": "pass123"
+            }
+        },
+        "other": {
+            "file": "AddMeeting-level-3-2.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: QueryAgenda\nDescription: The API for getting a schedule item includes parameters for token, content, time, and location.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the agenda.'}, 'time': {'type': 'str', 'description': 'The time for agenda. Format: %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location of the agenda.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me schedule a meeting with John for next Monday at 2 pm in the meeting room? </user>\n<response> Sure. Let me search for relevant tools first. </response>\n<response> Okay, to schedule a meeting with John for next Monday at 2 pm in the meeting room, I need your authentication. Can you please provide your username and password? </response>\n\n<user> My username is JohnDoe and my password is pass123. </user>\n<response> Great. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"JohnDoe\", \"password\": \"pass123\"}}\n</tool_call>\n<obs> {'token': 'a9s8d7f6g5h4j3k2l1'} </obs>\n<response> I've got your token. Now, let me schedule the meeting. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "AddMeeting",
+            "parameters": {
+                "token": "a9s8d7f6g5h4j3k2l1",
+                "meeting_topic": "Meeting with John",
+                "start_time": "2023-07-10 14:00:00",
+                "end_time": "2023-07-10 15:00:00",
+                "location": "meeting room",
+                "attendees": "['John']"
+            }
+        },
+        "other": {
+            "file": "AddMeeting-level-3-2.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: AddReminder\nDescription: Add a reminder API that takes three parameters - 'token'，'content' and 'time'. The 'token' parameter refers to the user's token and the 'content' parameter refers to the description of the reminder and the 'time' parameter specifies the time at which the reminder should be triggered.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the conference.'}, 'time': {'type': 'str', 'description': 'The time for conference. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me add a reminder for my meeting at 3pm on January 5, 2023 with the topic \"sales report\"? </user>\n<response> Sure, I can help you with that. First, let me search for the relevant tool. </response>\n<response> Found it! Now, I need your user authentication token. Can you please provide me with your username, password? </response>\n\n<user> My username is \"newuser\", my password is \"newpass\". </user>\n<response> Thank you. Now I'm going to get your user token. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "newuser",
+                "password": "newpass"
+            }
+        },
+        "other": {
+            "file": "AddReminder-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: AddReminder\nDescription: Add a reminder API that takes three parameters - 'token'，'content' and 'time'. The 'token' parameter refers to the user's token and the 'content' parameter refers to the description of the reminder and the 'time' parameter specifies the time at which the reminder should be triggered.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the conference.'}, 'time': {'type': 'str', 'description': 'The time for conference. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me add a reminder for my meeting at 3pm on January 5, 2023 with the topic \"sales report\"? </user>\n<response> Sure, I can help you with that. First, let me search for the relevant tool. </response>\n<response> Found it! Now, I need your user authentication token. Can you please provide me with your username, password? </response>\n\n<user> My username is \"newuser\", my password is \"newpass\". </user>\n<response> Thank you. Now I'm going to get your user token. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"newuser\", \"password\": \"newpass\"}}\n</tool_call>\n<obs> {'token': 'l9k8j7h6g5f4d3s2a1'} </obs>\n<response> Got it! Now let me add the reminder for you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "AddReminder",
+            "parameters": {
+                "token": "l9k8j7h6g5f4d3s2a1",
+                "content": "sales report",
+                "time": "2023-01-05 15:00:00"
+            }
+        },
+        "other": {
+            "file": "AddReminder-level-3-1.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: SymptomSearch\nDescription: This API searches for a given symptom.\nParameters: {'symptom': {'type': 'str', 'description': 'The symptom to search.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me find some information about a rash? </user>\n<response> Sure! What specifically do you want to know about the rash? </response>\n\n<user> I have a rash and I want to know what it could be. </user>\n<response> Okay, let me look that up for you. </response>\n<response> Based on my search results, it looks like there are a few different possibilities for what your rash could be. Would you like me to list them for you? </response>\n\n<user> Yes, please. </user>\n<response> Alright, here are the top two results: Contact dermatitis and Eczema. Does either of those sound like what you might be experiencing? </response>\n\n<user> I'm not sure. Can you tell me more about each of them? </user>\n<response> Of course. Let me look up some more information for you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "SymptomSearch",
+            "parameters": {
+                "symptom": "rash"
+            }
+        },
+        "other": {
+            "file": "SymptomSearch-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: QueryHistoryToday\nDescription: This API queries the history of a given user today.\nParameters: {'date': {'type': 'str', 'description': 'The date of the history. Format: %m-%d'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hi, I need to know my history on October 6, 2023. </user>\n<response> Sure, let me check. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "QueryHistoryToday",
+            "parameters": {
+                "date": "10-06"
+            }
+        },
+        "other": {
+            "file": "QueryHistoryToday-level-3-2.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: AddMeeting\nDescription: This API allows users to make a reservation for a meeting and store the meeting information in the database.Function：Allow users to make a reservation for a meeting.Exception Handling：1. If the reservation is successful, return a success message.2. If the reservation fails, return a corresponding error message.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'meeting_topic': {'type': 'str', 'description': 'The title of the meeting, no more than 50 characters.'}, 'start_time': {'type': 'str', 'description': 'The start time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'end_time': {'type': 'str', 'description': 'The end time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location where the meeting to be held, no more than 100 characters.'}, 'attendees': {'type': 'list(str)', 'description': 'The attendees of the meeting, including names, positions and other information.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me check if there's a meeting reservation for Marketing Campaign Planning on March 22nd at 9am in the Marketing Department? </user>\n<response> Sure! Let me search for relevant tools in the library first. </response>\n<response> The QueryMeeting tool can help us achieve that. But before that, I need your credentials to get the token. </response>\n\n<user> My username is testuser and password is testpass. </user>\n<response> Great. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "testuser",
+                "password": "testpass"
+            }
+        },
+        "other": {
+            "file": "QueryMeeting-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: AddMeeting\nDescription: This API allows users to make a reservation for a meeting and store the meeting information in the database.Function：Allow users to make a reservation for a meeting.Exception Handling：1. If the reservation is successful, return a success message.2. If the reservation fails, return a corresponding error message.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'meeting_topic': {'type': 'str', 'description': 'The title of the meeting, no more than 50 characters.'}, 'start_time': {'type': 'str', 'description': 'The start time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'end_time': {'type': 'str', 'description': 'The end time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location where the meeting to be held, no more than 100 characters.'}, 'attendees': {'type': 'list(str)', 'description': 'The attendees of the meeting, including names, positions and other information.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me check if there's a meeting reservation for Marketing Campaign Planning on March 22nd at 9am in the Marketing Department? </user>\n<response> Sure! Let me search for relevant tools in the library first. </response>\n<response> The QueryMeeting tool can help us achieve that. But before that, I need your credentials to get the token. </response>\n\n<user> My username is testuser and password is testpass. </user>\n<response> Great. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"testuser\", \"password\": \"testpass\"}}\n</tool_call>\n<obs> {'token': 'p9o8i7u6y5t4k3e2w1q'} </obs>\n<response> We have successfully authenticated. Now I will check the meeting reservation. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "QueryMeeting",
+            "parameters": {
+                "token": "p9o8i7u6y5t4k3e2w1q",
+                "meeting_topic": "Marketing Campaign Planning",
+                "start_time": "2023-03-22 09:00:00",
+                "end_time": "2023-03-22 11:00:00",
+                "location": "Marketing Department",
+                "attendees": "['Karen Zhang', 'Mark Brown', 'Timothy Lee']"
+            }
+        },
+        "other": {
+            "file": "QueryMeeting-level-3-1.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: Calculator\nDescription: This API provides basic arithmetic operations: addition, subtraction, multiplication, and division.\nParameters: {'formula': {'type': 'str', 'description': \"The formula that needs to be calculated. Only integers are supported. Valid operators are +, -, *, /, and (, ). For example, '(1 + 2) * 3'.\"}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me calculate 25*3+7/3? </user>\n<response> Sure, let me calculate that for you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "Calculator",
+            "parameters": {
+                "formula": "25*3+7/3"
+            }
+        },
+        "other": {
+            "file": "Calculator-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: RecordHealthData\nDescription: This API records the health history of a patient given user ID, time and health data.\nParameters: {'user_id': {'type': 'str', 'description': 'The ID of user.'}, 'time': {'type': 'str', 'description': 'The time of health data. Format: %Y-%m-%d %H:%M:%S'}, 'health_data': {'type': 'list', 'description': \"The health data, with the format like [{'name': 'blood_pressure', 'value': '120/80'}, {'name': 'heart_rate', 'value': '80'}]\"}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hi, can you please help me record my blood pressure and heart rate data for today? </user>\n<response> Sure. </response>\n<response> Alright. I will need your user ID, time, and health data to use this API. Can you please provide me with your user ID and time? </response>\n\n<user> My user ID is 123ABC and the time is 2023-10-15 09:00:00. </user>\n<response> Thank you. Now, can you please provide me with your blood pressure and heart rate readings? </response>\n\n<user> My blood pressure is 120/80 and my heart rate is 70 bpm. </user>\n<response> Great. I will now call the RecordHealthData API to record this data for you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "RecordHealthData",
+            "parameters": {
+                "user_id": "123ABC",
+                "time": "2023-10-15 09:00:00",
+                "health_data": "[{'name': 'blood_pressure', 'value': '120/80'}, {'name': 'heart_rate', 'value': '70 bpm'}]"
+            }
+        },
+        "other": {
+            "file": "RecordHealthData-level-3-2.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: AddAgenda\nDescription: The API for adding a schedule item includes parameters for token, content, time, and location.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the agenda.'}, 'time': {'type': 'str', 'description': 'The time for agenda. Format: %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location of the agenda.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me add an agenda to my schedule for July 15th at 2pm with the title \"Meeting with Client A\" at their office? </user>\n<response> Sure, let me search for the relevant tool. </response>\n<response> Okay. Now I can help you. To proceed, I need your token for authentication. Can you please provide me with your username, password and email? </response>\n\n<user> My username is newuser, password is newpass, and email is newuser@example.com. </user>\n<response> Thank you. Let me get your token first. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "newuser",
+                "password": "newpass"
+            }
+        },
+        "other": {
+            "file": "AddAgenda-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: AddAgenda\nDescription: The API for adding a schedule item includes parameters for token, content, time, and location.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the agenda.'}, 'time': {'type': 'str', 'description': 'The time for agenda. Format: %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location of the agenda.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me add an agenda to my schedule for July 15th at 2pm with the title \"Meeting with Client A\" at their office? </user>\n<response> Sure, let me search for the relevant tool. </response>\n<response> Okay. Now I can help you. To proceed, I need your token for authentication. Can you please provide me with your username, password and email? </response>\n\n<user> My username is newuser, password is newpass, and email is newuser@example.com. </user>\n<response> Thank you. Let me get your token first. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"newuser\", \"password\": \"newpass\"}}\n</tool_call>\n<obs> {'token': 'l9k8j7h6g5f4d3s2a1'} </obs>\n<response> Okay, I got your token. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "AddAgenda",
+            "parameters": {
+                "token": "l9k8j7h6g5f4d3s2a1",
+                "content": "Meeting with Client A",
+                "time": "2023-07-15 14:00:00",
+                "location": "Client"
+            }
+        },
+        "other": {
+            "file": "AddAgenda-level-3-1.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: DeleteMeeting\nDescription: This API allows users to delete a reservation for a meeting and remove the meeting information in the database.Function：Delete user's reservation for a meeting.Exception Handling：1. If the deletion is successful, return a success message.2. If the deletion fails, return a corresponding error message.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'meeting_topic': {'type': 'str', 'description': 'The title of the meeting, no more than 50 characters.'}, 'start_time': {'type': 'str', 'description': 'The start time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'end_time': {'type': 'str', 'description': 'The end time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location where the meeting to be held, no more than 100 characters.'}, 'attendees': {'type': 'list(str)', 'description': 'The attendees of the meeting, including names, positions and other information.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me delete my reservation for the Board Meeting on April 5th at 3:00 PM? </user>\n<response> Sure, I can assist you with that. Let me check if I can find the API for that. </response>\n<response> I need some information from you like the Meeting Topic, Start Time, End Time, Location, and Attendees. </response>\n\n<user> The meeting topic is Board Meeting, start time is April 5th 2023 at 3:00 PM, end time is April 5th 2023 at 5:00 PM, location is Boardroom, and attendees are Board Members. </user>\n<response> Thank you. I also need your username and password, please. </response>\n\n<user> My username is admin and the password is adminpass. </user>\n<response> Before proceeding it, I need to get your token for authentication. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "admin",
+                "password": "adminpass"
+            }
+        },
+        "other": {
+            "file": "DeleteMeeting-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: DeleteMeeting\nDescription: This API allows users to delete a reservation for a meeting and remove the meeting information in the database.Function：Delete user's reservation for a meeting.Exception Handling：1. If the deletion is successful, return a success message.2. If the deletion fails, return a corresponding error message.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'meeting_topic': {'type': 'str', 'description': 'The title of the meeting, no more than 50 characters.'}, 'start_time': {'type': 'str', 'description': 'The start time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'end_time': {'type': 'str', 'description': 'The end time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location where the meeting to be held, no more than 100 characters.'}, 'attendees': {'type': 'list(str)', 'description': 'The attendees of the meeting, including names, positions and other information.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me delete my reservation for the Board Meeting on April 5th at 3:00 PM? </user>\n<response> Sure, I can assist you with that. Let me check if I can find the API for that. </response>\n<response> I need some information from you like the Meeting Topic, Start Time, End Time, Location, and Attendees. </response>\n\n<user> The meeting topic is Board Meeting, start time is April 5th 2023 at 3:00 PM, end time is April 5th 2023 at 5:00 PM, location is Boardroom, and attendees are Board Members. </user>\n<response> Thank you. I also need your username and password, please. </response>\n\n<user> My username is admin and the password is adminpass. </user>\n<response> Before proceeding it, I need to get your token for authentication. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"admin\", \"password\": \"adminpass\"}}\n</tool_call>\n<obs> {'token': 'm9n8b7v6c5x4z3a2s1'} </obs>\n<response> Alright, I have received the token. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "DeleteMeeting",
+            "parameters": {
+                "token": "m9n8b7v6c5x4z3a2s1",
+                "meeting_topic": "Board Meeting",
+                "start_time": "2023-04-05 15:00:00",
+                "end_time": "2023-04-05 17:00:00",
+                "location": "Boardroom",
+                "attendees": "['Board Members']"
+            }
+        },
+        "other": {
+            "file": "DeleteMeeting-level-3-1.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: DeleteAccount\nDescription: Delete an account.\nParameters: {'token': {'type': 'str', 'description': 'The token of the user.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me delete my account? </user>\n<response> Sure, I'll need your token for authentication. Can you please provide me your username, and password? </response>\n\n<user> My username is user2, password is user2pass. </user>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "user2",
+                "password": "user2pass"
+            }
+        },
+        "other": {
+            "file": "DeleteAccount-level-3-3.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: DeleteAccount\nDescription: Delete an account.\nParameters: {'token': {'type': 'str', 'description': 'The token of the user.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me delete my account? </user>\n<response> Sure, I'll need your token for authentication. Can you please provide me your username, and password? </response>\n\n<user> My username is user2, password is user2pass. </user>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"user2\", \"password\": \"user2pass\"}}\n</tool_call>\n<obs> {'token': 'o9i8u7y6t5r4e3w2q1'} </obs>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "DeleteAccount",
+            "parameters": {
+                "token": "o9i8u7y6t5r4e3w2q1"
+            }
+        },
+        "other": {
+            "file": "DeleteAccount-level-3-3.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: AddAlarm\nDescription: The API for setting an alarm includes a parameter for the time.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'time': {'type': 'str', 'description': 'The time for alarm. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me set an alarm for 9:00 am on 7-15? </user>\n<response> Sure. Let me search for the appropriate tool first. </response>\n<response> Completed. I'll need to authenticate. Shall I go ahead and retrieve your token with your account information? </response>\n\n<user> Yes please. My username is user4 and my password is user4pass. </user>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "user4",
+                "password": "user4pass"
+            }
+        },
+        "other": {
+            "file": "AddAlarm-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: AddAlarm\nDescription: The API for setting an alarm includes a parameter for the time.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'time': {'type': 'str', 'description': 'The time for alarm. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me set an alarm for 9:00 am on 7-15? </user>\n<response> Sure. Let me search for the appropriate tool first. </response>\n<response> Completed. I'll need to authenticate. Shall I go ahead and retrieve your token with your account information? </response>\n\n<user> Yes please. My username is user4 and my password is user4pass. </user>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"user4\", \"password\": \"user4pass\"}}\n</tool_call>\n<obs> {'token': 'q9w8e7r6t5y4u3i2o1'} </obs>\n<response> I was able to retrieve your token. Now, set the alarm for 9:00 am on 7-15. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "AddAlarm",
+            "parameters": {
+                "token": "q9w8e7r6t5y4u3i2o1",
+                "time": "2023-07-15 09:00:00"
+            }
+        },
+        "other": {
+            "file": "AddAlarm-level-3-1.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: BookHotel\nDescription: This API orders a hotel room. Two rooms are ordered if the number of adults is greater than 2. Only one order can be made at same time.\nParameters: {'hotel_name': {'type': 'str', 'description': 'The name of the hotel.'}, 'check_in_time': {'type': 'str', 'description': 'The time to check in. Format: %Y-%m-%d'}, 'check_out_time': {'type': 'str', 'description': 'The time to check out. Format: %Y-%m-%d'}, 'room_count': {'type': 'int', 'description': 'The number of rooms to order.'}, 'adult_count': {'type': 'int', 'description': 'The number of adults.'}, 'child_count': {'type': 'int', 'description': 'The number of children.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me book a hotel for my family of four for the night of July 15th at Hilton? </user>\n<response> Sure, let me search for available hotels. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "BookHotel",
+            "parameters": {
+                "hotel_name": "Hilton",
+                "check_in_time": "2023-07-15",
+                "check_out_time": "2023-07-16",
+                "room_count": "1",
+                "adult_count": "2",
+                "child_count": "2"
+            }
+        },
+        "other": {
+            "file": "BookHotel-level-3-2.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: DeleteAgenda\nDescription: The API for deleting a schedule item includes parameters for token, content, time, and location.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the agenda.'}, 'time': {'type': 'str', 'description': 'The time for agenda. Format: %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location of the agenda.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you delete my meeting scheduled on March 18th at 2 pm at 123 Main St with client? </user>\n<response> Let me check. </response>\n<response> Based on my search, I can delete your meeting. May I know your account information, please? </response>\n\n<user> My username is JohnDoe and password is pass123. </user>\n<response> Thank you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "JohnDoe",
+                "password": "pass123"
+            }
+        },
+        "other": {
+            "file": "DeleteAgenda-level-3-2.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: DeleteAgenda\nDescription: The API for deleting a schedule item includes parameters for token, content, time, and location.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the agenda.'}, 'time': {'type': 'str', 'description': 'The time for agenda. Format: %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location of the agenda.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you delete my meeting scheduled on March 18th at 2 pm at 123 Main St with client? </user>\n<response> Let me check. </response>\n<response> Based on my search, I can delete your meeting. May I know your account information, please? </response>\n\n<user> My username is JohnDoe and password is pass123. </user>\n<response> Thank you. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"JohnDoe\", \"password\": \"pass123\"}}\n</tool_call>\n<obs> {'token': 'a9s8d7f6g5h4j3k2l1'} </obs>\n<response> Okay, I got your token. Now, please provide me with the details of the meeting you want to delete. </response>\n\n<user> The meeting content was 'Meeting with client', scheduled on March 18th, 2023 at 2 pm at 123 Main St. </user>\n<response> Alright. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "DeleteAgenda",
+            "parameters": {
+                "token": "a9s8d7f6g5h4j3k2l1",
+                "content": "Meeting with client",
+                "time": "2023-03-18 14:00:00",
+                "location": "123 Main St"
+            }
+        },
+        "other": {
+            "file": "DeleteAgenda-level-3-2.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: QueryRegistration\nDescription: This API queries the registration of a patient given patient ID.\nParameters: {'patient_name': {'type': 'str', 'description': 'The name of patient.'}, 'date': {'type': 'str', 'description': 'The date of appointment. Format be like %Y-%m-%d'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you please check if I have an appointment on April 12th? </user>\n<response> Sure, may I know your name please? </response>\n\n<user> John Doe </user>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "QueryRegistration",
+            "parameters": {
+                "patient_name": "John Doe",
+                "date": "2023-04-12"
+            }
+        },
+        "other": {
+            "file": "QueryRegistration-level-3-2.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: RecordHealthData\nDescription: This API records the health history of a patient given user ID, time and health data.\nParameters: {'user_id': {'type': 'str', 'description': 'The ID of user.'}, 'time': {'type': 'str', 'description': 'The time of health data. Format: %Y-%m-%d %H:%M:%S'}, 'health_data': {'type': 'list', 'description': \"The health data, with the format like [{'name': 'blood_pressure', 'value': '120/80'}, {'name': 'heart_rate', 'value': '80'}]\"}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me record my blood pressure and heart rate data? </user>\n<response> Sure, Let me check. </response>\n<response> Ah, here it is. May I know your user ID, please? </response>\n\n<user> My user ID is 1234. </user>\n<response> Great, may I have the time of your health data in the format of `%Y-%m-%d %H:%M:%S`, please? </response>\n\n<user> The time is 2023-06-05 14:30:00. </user>\n<response> Thank you. Lastly, can you tell me your blood pressure and heart rate data in the following format: `[{'name': 'blood_pressure', 'value': '120/80'}, {'name': 'heart_rate', 'value': '80'}]`? </response>\n\n<user> Sure. My blood pressure is {'name': 'blood_pressure', 'value': '130/85'} and my heart rate is {'name': 'heart_rate', 'value': '75'}. </user>\n<response> Okay, got it. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "RecordHealthData",
+            "parameters": {
+                "user_id": "1234",
+                "time": "2023-06-05 14:30:00",
+                "health_data": "[{'name': 'blood_pressure', 'value': '130/85'}, {'name': 'heart_rate', 'value': '75'}]"
+            }
+        },
+        "other": {
+            "file": "RecordHealthData-level-3-3.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: DeleteAccount\nDescription: Delete an account.\nParameters: {'token': {'type': 'str', 'description': 'The token of the user.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me delete my account? </user>\n<response> Sure, I can help with that. Before I proceed, may I know your username and password, please? </response>\n\n<user> My username is user2 and my password is user2pass. </user>\n<response> Thank you. Let me check if I have your token, one moment please. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "user2",
+                "password": "user2pass"
+            }
+        },
+        "other": {
+            "file": "DeleteAccount-level-3-2.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: DeleteAccount\nDescription: Delete an account.\nParameters: {'token': {'type': 'str', 'description': 'The token of the user.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me delete my account? </user>\n<response> Sure, I can help with that. Before I proceed, may I know your username and password, please? </response>\n\n<user> My username is user2 and my password is user2pass. </user>\n<response> Thank you. Let me check if I have your token, one moment please. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"user2\", \"password\": \"user2pass\"}}\n</tool_call>\n<obs> {'token': 'o9i8u7y6t5r4e3w2q1'} </obs>\n<response> Alright, I have your token. Now, let me try to delete your account. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "DeleteAccount",
+            "parameters": {
+                "token": "o9i8u7y6t5r4e3w2q1"
+            }
+        },
+        "other": {
+            "file": "DeleteAccount-level-3-2.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: BookHotel\nDescription: This API orders a hotel room. Two rooms are ordered if the number of adults is greater than 2. Only one order can be made at same time.\nParameters: {'hotel_name': {'type': 'str', 'description': 'The name of the hotel.'}, 'check_in_time': {'type': 'str', 'description': 'The time to check in. Format: %Y-%m-%d'}, 'check_out_time': {'type': 'str', 'description': 'The time to check out. Format: %Y-%m-%d'}, 'room_count': {'type': 'int', 'description': 'The number of rooms to order.'}, 'adult_count': {'type': 'int', 'description': 'The number of adults.'}, 'child_count': {'type': 'int', 'description': 'The number of children.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me book a hotel room for 2 adults and 1 child from July 10th to July 15th at Hilton Hotel? </user>\n<response> Sure, let me search for available hotels. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "BookHotel",
+            "parameters": {
+                "hotel_name": "Hilton Hotel",
+                "check_in_time": "2023-07-10",
+                "check_out_time": "2023-07-15",
+                "room_count": "1",
+                "adult_count": "2",
+                "child_count": "1"
+            }
+        },
+        "other": {
+            "file": "BookHotel-level-3-3.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: ModifyAgenda\nDescription: The API for modifying a schedule item includes parameters for token, content, time, and location.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the agenda.'}, 'time': {'type': 'str', 'description': 'The new time for agenda. Format: %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The new location of the agenda.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me modify a schedule item? </user>\n<response> Sure, what would you like to modify about the schedule item? </response>\n\n<user> I need to change the time and location of my grocery shopping on March 17th. </user>\n<response> Let me search for the relevant tools for modifying a schedule item. </response>\n<response> Alright, I found an API that can help you with that. To modify the schedule item, I need your token. Can you please provide me with your username and password so I can authenticate you? </response>\n\n<user> My username is \"foo\" and my password is \"bar\". </user>\n<response> Thank you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "foo",
+                "password": "bar"
+            }
+        },
+        "other": {
+            "file": "ModifyAgenda-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: ModifyAgenda\nDescription: The API for modifying a schedule item includes parameters for token, content, time, and location.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the agenda.'}, 'time': {'type': 'str', 'description': 'The new time for agenda. Format: %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The new location of the agenda.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me modify a schedule item? </user>\n<response> Sure, what would you like to modify about the schedule item? </response>\n\n<user> I need to change the time and location of my grocery shopping on March 17th. </user>\n<response> Let me search for the relevant tools for modifying a schedule item. </response>\n<response> Alright, I found an API that can help you with that. To modify the schedule item, I need your token. Can you please provide me with your username and password so I can authenticate you? </response>\n\n<user> My username is \"foo\" and my password is \"bar\". </user>\n<response> Thank you. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"foo\", \"password\": \"bar\"}}\n</tool_call>\n<obs> {'token': 'z9x8c7v6b5n4m3q2w1'} </obs>\n<response> Now, can you give me the details of the modification you would like to make? </response>\n\n<user> Sure, the content is \"Shopping for groceries\", the time is \"2023-03-17\", and I want to change the location to \"Walmart\". </user>\n<response> Thank you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "ModifyAgenda",
+            "parameters": {
+                "token": "z9x8c7v6b5n4m3q2w1",
+                "content": "Shopping for groceries",
+                "time": "2023-03-17 00:00:00",
+                "location": "Walmart"
+            }
+        },
+        "other": {
+            "file": "ModifyAgenda-level-3-1.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: EmergencyKnowledge\nDescription: This API searches for a given symptom.\nParameters: {'symptom': {'type': 'str', 'description': 'The symptom to search.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hi there, can you help me find some information about my symptoms? </user>\n<response> Of course, what are your symptoms? </response>\n\n<user> I'm feeling nauseous. </user>\n<response> It looks like your symptoms may be related to gastroenteritis or migraine. Would you like me to provide more information about these conditions? </response>\n\n<user> Yes, please. </user>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "EmergencyKnowledge",
+            "parameters": {
+                "symptom": "nausea"
+            }
+        },
+        "other": {
+            "file": "EmergencyKnowledge-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: SymptomSearch\nDescription: This API searches for a given symptom.\nParameters: {'symptom': {'type': 'str', 'description': 'The symptom to search.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me find some information on a rash I've been experiencing? </user>\n<response> Sure. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "SymptomSearch",
+            "parameters": {
+                "symptom": "rash"
+            }
+        },
+        "other": {
+            "file": "SymptomSearch-level-3-4.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: DeleteAccount\nDescription: Delete an account.\nParameters: {'token': {'type': 'str', 'description': 'The token of the user.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hi, can you help me delete my account? </user>\n<response> Sure, I can help you with that. Before we proceed, may I know your username and password? </response>\n\n<user> My username is user2 and password is user2pass. </user>\n<response> Thank you. To delete your account, I need a token to authenticate the request. Let me get the token for you. Please give me a moment. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "user2",
+                "password": "user2pass"
+            }
+        },
+        "other": {
+            "file": "DeleteAccount-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: DeleteAccount\nDescription: Delete an account.\nParameters: {'token': {'type': 'str', 'description': 'The token of the user.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hi, can you help me delete my account? </user>\n<response> Sure, I can help you with that. Before we proceed, may I know your username and password? </response>\n\n<user> My username is user2 and password is user2pass. </user>\n<response> Thank you. To delete your account, I need a token to authenticate the request. Let me get the token for you. Please give me a moment. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"user2\", \"password\": \"user2pass\"}}\n</tool_call>\n<obs> {'token': 'o9i8u7y6t5r4e3w2q1'} </obs>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "DeleteAccount",
+            "parameters": {
+                "token": "o9i8u7y6t5r4e3w2q1"
+            }
+        },
+        "other": {
+            "file": "DeleteAccount-level-3-1.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: QueryMeeting\nDescription: This API allows users to query a reservation for a meeting.Function：Query infomation for a meeting.Exception Handling：1. If the Query is successful, return a meeting infomation with json.2. If the Query fails, return a error message.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'meeting_topic': {'type': 'str', 'description': 'The title of the meeting, no more than 50 characters.'}, 'start_time': {'type': 'str', 'description': 'The start time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'end_time': {'type': 'str', 'description': 'The end time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location where the meeting to be held, no more than 100 characters.'}, 'attendees': {'type': 'list(str)', 'description': 'The attendees of the meeting, including names, positions and other information.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me query the meeting details for the Marketing Campaign Planning on March 22nd 2023 from 9am to 11am held in Marketing Department, with attendees Karen Zhang, Mark Brown, and Timothy Lee? </user>\n<response> Sure. </response>\n<response> I found one. I need your username and password to generate the token for authenticate. What's your username and password? </response>\n\n<user> My username is testuser and password is testpass. </user>\n<response> Great. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "testuser",
+                "password": "testpass"
+            }
+        },
+        "other": {
+            "file": "QueryMeeting-level-3-2.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: QueryMeeting\nDescription: This API allows users to query a reservation for a meeting.Function：Query infomation for a meeting.Exception Handling：1. If the Query is successful, return a meeting infomation with json.2. If the Query fails, return a error message.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'meeting_topic': {'type': 'str', 'description': 'The title of the meeting, no more than 50 characters.'}, 'start_time': {'type': 'str', 'description': 'The start time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'end_time': {'type': 'str', 'description': 'The end time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location where the meeting to be held, no more than 100 characters.'}, 'attendees': {'type': 'list(str)', 'description': 'The attendees of the meeting, including names, positions and other information.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me query the meeting details for the Marketing Campaign Planning on March 22nd 2023 from 9am to 11am held in Marketing Department, with attendees Karen Zhang, Mark Brown, and Timothy Lee? </user>\n<response> Sure. </response>\n<response> I found one. I need your username and password to generate the token for authenticate. What's your username and password? </response>\n\n<user> My username is testuser and password is testpass. </user>\n<response> Great. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"testuser\", \"password\": \"testpass\"}}\n</tool_call>\n<obs> {'token': 'p9o8i7u6y5t4k3e2w1q'} </obs>\n<response> We have successfully authenticated. Now I will check the meeting reservation. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "QueryMeeting",
+            "parameters": {
+                "token": "p9o8i7u6y5t4k3e2w1q",
+                "meeting_topic": "Marketing Campaign Planning",
+                "start_time": "2023-03-22 09:00:00",
+                "end_time": "2023-03-22 11:00:00",
+                "location": "Marketing Department",
+                "attendees": "['Karen Zhang', 'Mark Brown', 'Timothy Lee']"
+            }
+        },
+        "other": {
+            "file": "QueryMeeting-level-3-2.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: SymptomSearch\nDescription: This API searches for a given symptom.\nParameters: {'symptom': {'type': 'str', 'description': 'The symptom to search.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me find some possible illnesses that cause a rash? </user>\n<response> Sure, let me search for that. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "SymptomSearch",
+            "parameters": {
+                "symptom": "rash"
+            }
+        },
+        "other": {
+            "file": "SymptomSearch-level-3-5.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: ModifyMeeting\nDescription: This API allows users to modify a reservation for a meetingFunction：Delete user's reservation for a meeting.Exception Handling：1. If the modification is successful, return a success message.2. If the modification fails, return a corresponding error message.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'meeting_topic': {'type': 'str', 'description': 'The title of the meeting, no more than 50 characters.'}, 'start_time': {'type': 'str', 'description': 'The start time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'end_time': {'type': 'str', 'description': 'The end time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location where the meeting to be held, no more than 100 characters.'}, 'attendees': {'type': 'list(str)', 'description': 'The attendees of the meeting, including names, positions and other information.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> I need to cancel my reservation for the Board Meeting on April 5th at 3 pm in the Boardroom with Board Members. </user>\n<response> Let me check the tools we have first. </response>\n<response> Okay, to cancel your reservation, I’ll need to use the DeleteMeeting API. For authentication, I need to get your user token. What's your username and password? </response>\n\n<user> My username is admin and password is adminpass. </user>\n<response> Okay. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "admin",
+                "password": "adminpass"
+            }
+        },
+        "other": {
+            "file": "DeleteMeeting-level-3-2.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: ModifyMeeting\nDescription: This API allows users to modify a reservation for a meetingFunction：Delete user's reservation for a meeting.Exception Handling：1. If the modification is successful, return a success message.2. If the modification fails, return a corresponding error message.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'meeting_topic': {'type': 'str', 'description': 'The title of the meeting, no more than 50 characters.'}, 'start_time': {'type': 'str', 'description': 'The start time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'end_time': {'type': 'str', 'description': 'The end time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location where the meeting to be held, no more than 100 characters.'}, 'attendees': {'type': 'list(str)', 'description': 'The attendees of the meeting, including names, positions and other information.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> I need to cancel my reservation for the Board Meeting on April 5th at 3 pm in the Boardroom with Board Members. </user>\n<response> Let me check the tools we have first. </response>\n<response> Okay, to cancel your reservation, I’ll need to use the DeleteMeeting API. For authentication, I need to get your user token. What's your username and password? </response>\n\n<user> My username is admin and password is adminpass. </user>\n<response> Okay. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"admin\", \"password\": \"adminpass\"}}\n</tool_call>\n<obs> {'token': 'm9n8b7v6c5x4z3a2s1'} </obs>\n<response> Perfect! Now, please give me the details of the meeting you want to cancel, such as the topic, start time, end time, location, and attendees. </response>\n\n<user> The topic is Board Meeting, the start time is April 5th, 2023 at 3 pm, the end time is April 5th, 2023 at 5 pm, the location is Boardroom, and the attendees are Board Members. </user>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "DeleteMeeting",
+            "parameters": {
+                "token": "m9n8b7v6c5x4z3a2s1",
+                "meeting_topic": "Board Meeting",
+                "start_time": "2023-04-05 15:00:00",
+                "end_time": "2023-04-05 17:00:00",
+                "location": "Boardroom",
+                "attendees": "['Board Members']"
+            }
+        },
+        "other": {
+            "file": "DeleteMeeting-level-3-2.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: Calculator\nDescription: This API provides basic arithmetic operations: addition, subtraction, multiplication, and division.\nParameters: {'formula': {'type': 'str', 'description': \"The formula that needs to be calculated. Only integers are supported. Valid operators are +, -, *, /, and (, ). For example, '(1 + 2) * 3'.\"}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me calculate the square of 8? </user>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "Calculator",
+            "parameters": {
+                "formula": "8*8"
+            }
+        },
+        "other": {
+            "file": "Calculator-level-3-2.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: RecordHealthData\nDescription: This API records the health history of a patient given user ID, time and health data.\nParameters: {'user_id': {'type': 'str', 'description': 'The ID of user.'}, 'time': {'type': 'str', 'description': 'The time of health data. Format: %Y-%m-%d %H:%M:%S'}, 'health_data': {'type': 'list', 'description': \"The health data, with the format like [{'name': 'blood_pressure', 'value': '120/80'}, {'name': 'heart_rate', 'value': '80'}]\"}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me record my blood pressure and heart rate? </user>\n<response> Sure, I can help you with that. </response>\n<response> To proceed, please provide me with your user ID and the time of the health data. </response>\n\n<user> My user ID is ABC123 and the time is 2023-10-18 09:30:00. </user>\n<response> Great, now I need your blood pressure and heart rate readings. </response>\n\n<user> The blood pressure reading is 140/80 and the heart rate is 70. </user>\n<response> Thanks for the information. Let me record that for you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "RecordHealthData",
+            "parameters": {
+                "user_id": "ABC123",
+                "time": "2023-10-18 09:30:00",
+                "health_data": "[{'name': 'blood_pressure', 'value': '140/80'}, {'name': 'heart_rate', 'value': '70'}]"
+            }
+        },
+        "other": {
+            "file": "RecordHealthData-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: AddAgenda\nDescription: The API for adding a schedule item includes parameters for token, content, time, and location.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the agenda.'}, 'time': {'type': 'str', 'description': 'The time for agenda. Format: %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location of the agenda.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me add a meeting to my agenda for July 15th at 3pm in the conference room? </user>\n<response> Sure, let me search for the relevant tool. </response>\n<response> To add your meeting, I need your authentication token. Can you please provide me with your username and password? </response>\n\n<user> My username is newuser and my password is newpass. </user>\n<response> Thanks for providing the information. Let me authenticate you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "newuser",
+                "password": "newpass"
+            }
+        },
+        "other": {
+            "file": "AddAgenda-level-3-2.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: AddAgenda\nDescription: The API for adding a schedule item includes parameters for token, content, time, and location.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the agenda.'}, 'time': {'type': 'str', 'description': 'The time for agenda. Format: %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location of the agenda.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me add a meeting to my agenda for July 15th at 3pm in the conference room? </user>\n<response> Sure, let me search for the relevant tool. </response>\n<response> To add your meeting, I need your authentication token. Can you please provide me with your username and password? </response>\n\n<user> My username is newuser and my password is newpass. </user>\n<response> Thanks for providing the information. Let me authenticate you. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"newuser\", \"password\": \"newpass\"}}\n</tool_call>\n<obs> {'token': 'l9k8j7h6g5f4d3s2a1'} </obs>\n<response> Your authentication was successful. Now, let me add your meeting to your agenda. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "AddAgenda",
+            "parameters": {
+                "token": "l9k8j7h6g5f4d3s2a1",
+                "content": "Meeting in conference room",
+                "time": "2023-07-15 15:00:00",
+                "location": "conference room"
+            }
+        },
+        "other": {
+            "file": "AddAgenda-level-3-2.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: QueryAlarm\nDescription: The API for querying alarm clock, help user to check the alarm clock they have set.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'time': {'type': 'str', 'description': 'The time for alarm. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hmm, I am actually looking for an alarm clock API. </user>\n<response> Understood, let me check if we have an API for querying alarm. </response>\n<response> Yes, we do have an API for that. But it requires authentication. Can you please provide me your username and password? </response>\n\n<user> Sure, my username is user4 and my password is user4pass. </user>\n<response> Thank you. Let me authenticate you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "user4",
+                "password": "user4pass"
+            }
+        },
+        "other": {
+            "file": "QueryAlarm-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: QueryAlarm\nDescription: The API for querying alarm clock, help user to check the alarm clock they have set.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'time': {'type': 'str', 'description': 'The time for alarm. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hmm, I am actually looking for an alarm clock API. </user>\n<response> Understood, let me check if we have an API for querying alarm. </response>\n<response> Yes, we do have an API for that. But it requires authentication. Can you please provide me your username and password? </response>\n\n<user> Sure, my username is user4 and my password is user4pass. </user>\n<response> Thank you. Let me authenticate you. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"user4\", \"password\": \"user4pass\"}}\n</tool_call>\n<obs> {'token': 'q9w8e7r6t5y4u3i2o1'} </obs>\n<response> Now that I have the token, can you please tell me the time for which you want to query alarm? </response>\n\n<user> I want to check if I have set any alarms for March 25th, 2023 at 2:10 pm. </user>\n<response> Okay, let me check that for you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "QueryAlarm",
+            "parameters": {
+                "token": "q9w8e7r6t5y4u3i2o1",
+                "time": "2023-03-25 14:10:00"
+            }
+        },
+        "other": {
+            "file": "QueryAlarm-level-3-1.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: BookHotel\nDescription: This API orders a hotel room. Two rooms are ordered if the number of adults is greater than 2. Only one order can be made at same time.\nParameters: {'hotel_name': {'type': 'str', 'description': 'The name of the hotel.'}, 'check_in_time': {'type': 'str', 'description': 'The time to check in. Format: %Y-%m-%d'}, 'check_out_time': {'type': 'str', 'description': 'The time to check out. Format: %Y-%m-%d'}, 'room_count': {'type': 'int', 'description': 'The number of rooms to order.'}, 'adult_count': {'type': 'int', 'description': 'The number of adults.'}, 'child_count': {'type': 'int', 'description': 'The number of children.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you help me book a hotel room for two adults and one child on October 5th and check-out on October 7th at Grand Hotel? </user>\n<response> Sure, let me search for available hotels. </response>\n<response> I have found the tool that can help us book a hotel room. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "BookHotel",
+            "parameters": {
+                "hotel_name": "Grand Hotel",
+                "check_in_time": "2023-10-05",
+                "check_out_time": "2023-10-07",
+                "room_count": "1",
+                "adult_count": "2",
+                "child_count": "1"
+            }
+        },
+        "other": {
+            "file": "BookHotel-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: AddAlarm\nDescription: The API for setting an alarm includes a parameter for the time.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'time': {'type': 'str', 'description': 'The time for alarm. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you set an alarm for January 7th, 2023 at 8am? </user>\n<response> Sure, I can help with that. First, let me check if I have the alarm setting tool. </response>\n<response> Yes, we have it. Since this is a secure operation, I need to authenticate you first. Can you please provide your username and password? </response>\n\n<user> My username is user4 and my password is user4pass. </user>\n<response> Thank you, using this information I was able to get your token. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "user4",
+                "password": "user4pass"
+            }
+        },
+        "other": {
+            "file": "AddAlarm-level-3-2.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: AddAlarm\nDescription: The API for setting an alarm includes a parameter for the time.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'time': {'type': 'str', 'description': 'The time for alarm. Format: %Y-%m-%d %H:%M:%S'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Can you set an alarm for January 7th, 2023 at 8am? </user>\n<response> Sure, I can help with that. First, let me check if I have the alarm setting tool. </response>\n<response> Yes, we have it. Since this is a secure operation, I need to authenticate you first. Can you please provide your username and password? </response>\n\n<user> My username is user4 and my password is user4pass. </user>\n<response> Thank you, using this information I was able to get your token. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"user4\", \"password\": \"user4pass\"}}\n</tool_call>\n<obs> {'token': 'q9w8e7r6t5y4u3i2o1'} </obs>\n<response> Now let me set the alarm for you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "AddAlarm",
+            "parameters": {
+                "token": "q9w8e7r6t5y4u3i2o1",
+                "time": "2023-01-07 08:00:00"
+            }
+        },
+        "other": {
+            "file": "AddAlarm-level-3-2.jsonl",
+            "id": 1
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: QueryRegistration\nDescription: This API queries the registration of a patient given patient ID.\nParameters: {'patient_name': {'type': 'str', 'description': 'The name of patient.'}, 'date': {'type': 'str', 'description': 'The date of appointment. Format be like %Y-%m-%d'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hi, I need to check the registration of a patient with ID 12345678 for April 12th, 2023. </user>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "QueryRegistration",
+            "parameters": {
+                "patient_name": "John Doe",
+                "date": "2023-04-12"
+            }
+        },
+        "other": {
+            "file": "QueryRegistration-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: DeleteAgenda\nDescription: The API for deleting a schedule item includes parameters for token, content, time, and location.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the agenda.'}, 'time': {'type': 'str', 'description': 'The time for agenda. Format: %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location of the agenda.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hi, can you help me delete an agenda for my meeting with the client on March 18 at 2pm at 123 Main St? </user>\n<response> Sure, I can delete a schedule item. For authentication purposes, may I know your username and password? </response>\n\n<user> My username is JohnDoe and my password is pass123. </user>\n<response> Thank you. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "GetUserToken",
+            "parameters": {
+                "username": "JohnDoe",
+                "password": "pass123"
+            }
+        },
+        "other": {
+            "file": "DeleteAgenda-level-3-1.jsonl",
+            "id": 0
+        }
+    },
+    {
+        "system": "You are a helpful multi-turn dialogue assistant capable of leveraging tool calls to solve user tasks and provide structured chat responses.\n\n**Available Tools**\nIn your response, you can use the following tools:\n1. Name: GetUserToken\nDescription: Get the user token.\nParameters: {'username': {'type': 'str', 'description': 'The username of the user.'}, 'password': {'type': 'str', 'description': 'The password of the user.'}}\n2. Name: DeleteAgenda\nDescription: The API for deleting a schedule item includes parameters for token, content, time, and location.\nParameters: {'token': {'type': 'str', 'description': \"User's token.\"}, 'content': {'type': 'str', 'description': 'The content of the agenda.'}, 'time': {'type': 'str', 'description': 'The time for agenda. Format: %Y-%m-%d %H:%M:%S'}, 'location': {'type': 'str', 'description': 'The location of the agenda.'}}\n\n**Only generate Tool Calls: If a tool is needed, specify the tool and its parameters.**\n**Output Format**\n```<tool_call>\n{\"name\": \"Tool name\", \"parameters\": {\"Parameter name\": \"Parameter content\", \"... ...\": \"... ...\"}}\n{\"name\": \"... ...\", \"parameters\": {\"... ...\": \"... ...\", \"... ...\": \"... ...\"}}\n...\n</tool_call>\n```\n\n**Important Notes**\n1. Provide at least one of `<tool_call>`.\n2. You can invoke multiple tool calls simultaneously in the `<tool_call>` fields. Each tool call should be a JSON object with a \"name\" field and an \"parameters\" field containing a dictionary of parameters. If no parameters are needed, leave the \"parameters\" field an empty dictionary.\n3. Refer to the previous dialogue records in the history, including the user's queries, previous `<tool_call>`, `<response>`, and any tool feedback noted as `<obs>` (if exists).",
+        "user": "***Dialogue Records History**\n<user> Hi, can you help me delete an agenda for my meeting with the client on March 18 at 2pm at 123 Main St? </user>\n<response> Sure, I can delete a schedule item. For authentication purposes, may I know your username and password? </response>\n\n<user> My username is JohnDoe and my password is pass123. </user>\n<response> Thank you. </response>\n<tool_call>\n{\"name\": \"GetUserToken\", \"parameters\": {\"username\": \"JohnDoe\", \"password\": \"pass123\"}}\n</tool_call>\n<obs> {'token': 'a9s8d7f6g5h4j3k2l1'} </obs>\n<response> OK. Can you please provide me the details for the agenda item you want to delete? </response>\n\n<user> Yes, I want to delete an agenda for my meeting with the client. The content is \"Meeting with client\", the time is \"2023-03-18 14:00:00\", and the location is \"123 Main St\". </user>\n<response> Okay, I got it. </response>\n\n<user> Based on our conversation above, please only make one tool call to solve my need.</user>\n",
+        "answer": {
+            "name": "DeleteAgenda",
+            "parameters": {
+                "token": "a9s8d7f6g5h4j3k2l1",
+                "content": "Meeting with client",
+                "time": "2023-03-18 14:00:00",
+                "location": "123 Main St"
+            }
+        },
+        "other": {
+            "file": "DeleteAgenda-level-3-1.jsonl",
+            "id": 1
+        }
+    }
+]
